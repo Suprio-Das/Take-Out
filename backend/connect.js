@@ -16,7 +16,7 @@ module.exports = {
     connectToServer: async () => {
         try {
             await client.connect()
-            database = client.db('booksZone')
+            database = client.db('takeOut')
             console.log("MongoDB connected successfully")
         } catch (error) {
             console.log("Failed to connect MongoDB")
