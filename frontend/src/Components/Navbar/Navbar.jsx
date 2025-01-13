@@ -1,4 +1,4 @@
-import { Link } from "react-router";
+import { Link, NavLink } from "react-router";
 import { useState } from "react";
 
 const Navbar = () => {
@@ -60,7 +60,7 @@ const Navbar = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-                <a className="btn">Button</a>
+                <NavLink className="btn" to="/signup">Signup</NavLink>
                 <div className="ms-2">
                     <label className="swap swap-rotate h-10">
                         <input type="checkbox" onClick={toggleTheme} />
