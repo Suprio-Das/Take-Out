@@ -50,19 +50,19 @@ const Signup = () => {
                 </div>
                 <form onSubmit={handleSubmit}>
                     <div className="my-3">
-                        <label htmlFor="username" className="input input-bordered flex items-center gap-2">
+                        <label htmlFor="username" className={`input input-bordered flex items-center gap-2 ${errors.username ? 'border-red-500' : ''}`}>
                             Name
                             <input type="text" className="grow" placeholder="Suprio Das" name="username" required />
                         </label>
                     </div>
                     <div className="my-3">
-                        <label htmlFor="email" className="input input-bordered flex items-center gap-2">
+                        <label htmlFor="email" className={`input input-bordered flex items-center gap-2 ${errors.email ? 'border-red-500' : ''}`}>
                             Email
                             <input type="email" className="grow" placeholder="suprio.cse@gmail.com" name="email" required />
                         </label>
                     </div>
                     <div className="my-3">
-                        <label htmlFor="password" className="input input-bordered flex items-center gap-2">
+                        <label htmlFor="password" className={`input input-bordered flex items-center gap-2 ${errors.password ? 'border-red-500' : ''}`}>
                             Password
                             <input type="password" className="grow" placeholder="Create a strong password" name="password" required />
                         </label>
