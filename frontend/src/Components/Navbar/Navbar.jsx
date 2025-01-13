@@ -61,6 +61,7 @@ const Navbar = () => {
             </div>
             <div className="navbar-end">
                 <NavLink className="btn" to="/signup">Signup</NavLink>
+                <NavLink className="btn ms-2" to="/login">Login</NavLink>
                 <div className="ms-2">
                     <label className="swap swap-rotate h-10">
                         <input type="checkbox" onClick={toggleTheme} />
