@@ -37,7 +37,7 @@ UserRoutes.post('/signup', async (req, res) => {
         const result = await userCollection.insertOne(newUser);
 
         res.status(201).json({
-            message: 'User created successfully!',
+            message: 'Account created successfully!',
             userId: result.insertedId,
         });
     } catch (error) {

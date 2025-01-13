@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { GoPersonFill } from "react-icons/go";
+import { createUser } from "../../api";
 const Signup = () => {
     const [formData, setFormData] = useState({})
     const [errors, setErrors] = useState({})
@@ -20,7 +21,7 @@ const Signup = () => {
         return newError
     }
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault()
         const form = e.target
         const data = {
@@ -38,12 +39,12 @@ const Signup = () => {
         else {
             setErrors({})
             setFormData(data)
-            console.log(data)
+            let response = await createUser(formData);
         }
     }
     return (
         <div className="min-h-screen flex justify-center items-center">
-            <div className="card card-compact bg-white w-full max-w-md px-5 py-3">
+            <div className="card card-compact bg-white w-full max-w-md px-5 py-3 shadow-md">
                 <div className="flex justify-center items-center gap-x-2 text-center mb-5">
                     <GoPersonFill />
                     <h2 className="text-xl font-semibold">Signup</h2>
