@@ -54,18 +54,21 @@ const Signup = () => {
                             Name
                             <input type="text" className="grow" placeholder="Suprio Das" name="username" required />
                         </label>
+                        <code className="text-center text-sm block text-red-500">{errors.username ? errors.username : ''}</code>
                     </div>
                     <div className="my-3">
                         <label htmlFor="email" className={`input input-bordered flex items-center gap-2 ${errors.email ? 'border-red-500' : ''}`}>
                             Email
                             <input type="email" className="grow" placeholder="suprio.cse@gmail.com" name="email" required />
                         </label>
+                        <code className="text-center text-sm block text-red-500" id="email">{errors.email ? errors.email : ''}</code>
                     </div>
                     <div className="my-3">
                         <label htmlFor="password" className={`input input-bordered flex items-center gap-2 ${errors.password ? 'border-red-500' : ''}`}>
                             Password
                             <input type="password" className="grow" placeholder="Create a strong password" name="password" required />
                         </label>
+                        <code className="text-center text-sm block text-red-500" id="email">{errors.password ? errors.password : ''}</code>
                     </div>
                     <div className="my-3">
                         <button type="submit" className="btn w-full">Create Account</button>
