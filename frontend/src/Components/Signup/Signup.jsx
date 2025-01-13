@@ -2,16 +2,44 @@ import { useState } from "react";
 import { GoPersonFill } from "react-icons/go";
 const Signup = () => {
     const [formData, setFormData] = useState({})
+    const [errors, setErrors] = useState({})
+
+    const validate = (data) => {
+        const newError = {}
+        if (data.username.trim().length < 5) {
+            newError.username = 'Username should be at least 5 words longer.'
+        }
+        const emailExpression = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailExpression.test(data.email)) {
+            newError.email = 'Enter a valid email address'
+        }
+        if (data.password.trim().length < 5) {
+            newError.password = 'Password should be at least 5 words longer.'
+        }
+
+        return newError
+    }
 
     const handleSubmit = (e) => {
         e.preventDefault()
         const form = e.target
         const data = {
-            name: form.username.value,
+            username: form.username.value,
             email: form.email.value,
             password: form.password.value
         }
-        console.log(data)
+
+        const validationResult = validate(data)
+
+        if (Object.keys(validationResult).length > 0) {
+            setErrors(validationResult)
+            console.log(errors)
+        }
+        else {
+            setErrors({})
+            setFormData(data)
+            console.log(data)
+        }
     }
     return (
         <div className="min-h-screen flex justify-center items-center">
