@@ -46,6 +46,8 @@ const Login = () => {
             toast.success(response.data.message);
 
             setTimeout(() => {
+                localStorage.setItem("authToken", response.data.authToken)
+                console.log(localStorage.getItem("authToken"))
                 navigate("/");
             }, 1000);
         } catch (error) {
