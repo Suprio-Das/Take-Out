@@ -46,4 +46,33 @@ UserRoutes.post('/signup', async (req, res) => {
     }
 });
 
+
+UserRoutes.post('/login', async (req, res) => {
+    try {
+        const { email, password } = req.body;
+
+        const db = await database.getDB();
+        const userCollection = await db.collection('users');
+
+        const user = await userCollection.findOne({ email });
+        if (!user) {
+            return res.status(400).json({ message: 'User not found.' });
+        }
+
+        // Hash the password
+        const comparePassword = await bcrypt.compare(password, user.password);
+
+        if (!comparePassword) {
+            return res.json({ message: "Invalid password or email" })
+        }
+        else {
+            res.json({ message: "Login Successful" })
+        }
+
+    } catch (error) {
+        console.error('Error logging in:', error);
+        res.status(500).json({ message: 'Internal server error.' });
+    }
+});
+
 module.exports = UserRoutes;
