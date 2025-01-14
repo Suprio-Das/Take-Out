@@ -1,13 +1,14 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { GoPersonFill } from "react-icons/go";
 import { loginuser } from "../../api";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const Login = () => {
-    const [formData, setFormData] = useState({})
     const [errors, setErrors] = useState({});
     const [isLoading, setIsLoading] = useState(false);
+    const navigate = useNavigate();
 
     const validate = (data) => {
         const newError = {};
@@ -29,23 +30,29 @@ const Login = () => {
             password: form.password.value,
         };
 
+        // Validate input fields
         const validationResult = validate(data);
-
         if (Object.keys(validationResult).length > 0) {
             setErrors(validationResult);
+            return;
         } else {
             setErrors({});
-            setIsLoading(true);
-            setFormData(data)
-            try {
-                const response = await loginuser(formData);
-                toast.success(response.data.message);
-                form.reset();
-            } catch (error) {
-                toast.error(error.response?.data?.message || "Login failed");
-            } finally {
-                setIsLoading(false);
-            }
+        }
+
+        setIsLoading(true);
+        try {
+            const response = await loginuser(data);
+            toast.success(response.data.message);
+
+            setTimeout(() => {
+                navigate("/");
+            }, 1000);
+        } catch (error) {
+            const errorMessage =
+                error.response?.data?.message || "Something went wrong!";
+            toast.error(errorMessage);
+        } finally {
+            setIsLoading(false);
         }
     };
 
@@ -99,7 +106,7 @@ const Login = () => {
                         <button
                             type="submit"
                             className="btn w-full"
-                            disabled={isLoading} // Disable button while loading
+                            disabled={isLoading}
                         >
                             {isLoading ? "Logging in..." : "Login"}
                         </button>
