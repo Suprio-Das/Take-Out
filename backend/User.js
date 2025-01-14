@@ -1,8 +1,9 @@
 const express = require('express');
 const database = require('./connect');
 const bcrypt = require('bcrypt');
-
 const UserRoutes = express.Router();
+const jwt = require('jsonwebtoken')
+const jwtSecret = "Thisisacompletemernstackproject@2025@january"
 
 UserRoutes.post('/signup', async (req, res) => {
     try {
@@ -65,9 +66,14 @@ UserRoutes.post('/login', async (req, res) => {
         if (!comparePassword) {
             return res.json({ message: "Invalid password or email" })
         }
-        else {
-            res.json({ message: "Login Successful" })
+
+        const data = {
+            user: {
+                id: user._id
+            }
         }
+        const authToken = jwt.sign(data, jwtSecret)
+        res.json({ message: "Login Successful", authToken })
 
     } catch (error) {
         console.error('Error logging in:', error);

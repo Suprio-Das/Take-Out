@@ -42,6 +42,7 @@ const Login = () => {
         setIsLoading(true);
         try {
             const response = await loginuser(data);
+            console.log(response)
             toast.success(response.data.message);
 
             setTimeout(() => {
