@@ -19,7 +19,7 @@ const Home = () => {
     return (
         <div>
             <Carousel></Carousel>
-            <div className="w-[95%] mx-auto my-5 grid grid-cols-1 lg:grid-cols-3">
+            <div className="w-[95%] mx-auto my-5 grid grid-cols-1 lg:grid-cols-3 gap-10">
                 {
                     foodData.map(food => <FoodCard key={food._id} food={food}></FoodCard>)
                 }
