@@ -1,15 +1,17 @@
-const FoodCard = () => {
+const FoodCard = ({ filteredItem }) => {
+    const { name, description, img, options } = filteredItem
+    console.log(filteredItem)
     return (
         <div>
             <div className="card card-compact bg-base-100 w-96 h-96 shadow-xl">
                 <figure>
                     <img
-                        src="https://images.mrcook.app/recipe-image/01915ba9-1590-76a5-81f6-4417ecb47538"
+                        src={img}
                         alt="Biriyani" />
                 </figure>
                 <div className="card-body">
-                    <h2 className="card-title">Bashmati Chicken Biriyani</h2>
-                    <p className="mb-2">Buy the Best Biriyani in the City.</p>
+                    <h2 className="card-title">{name}</h2>
+                    <p className="mb-2">{description}</p>
                     <div className="flex justify-around items-center gap-2">
                         <select className="select select-bordered w-[50%] max-w-xs">
                             {
