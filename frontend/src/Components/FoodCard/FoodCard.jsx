@@ -1,6 +1,8 @@
 const FoodCard = ({ filteredItem }) => {
     const { name, description, img, options } = filteredItem
-    console.log(filteredItem)
+    const priceOptionsArray = options[0]
+    const priceOptions = Object.keys(priceOptionsArray)
+    console.log(priceOptions)
     return (
         <div>
             <div className="card card-compact bg-base-100 w-96 h-96 shadow-xl">
@@ -23,8 +25,13 @@ const FoodCard = ({ filteredItem }) => {
                             }
                         </select>
                         <select className="select select-bordered w-[50%] max-w-xs">
-                            <option>Half</option>
-                            <option>Full</option>
+                            {
+                                priceOptions.map((option, index) => {
+                                    return (
+                                        <option key={index} value={option}>{option}</option>
+                                    )
+                                })
+                            }
                         </select>
                         <div className="w-full max-w-xs">
                             <p><span className="font-semibold">Total Price:</span> 1000BDT.</p>
