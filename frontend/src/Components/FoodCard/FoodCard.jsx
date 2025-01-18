@@ -1,3 +1,4 @@
+import { FaCartArrowDown } from "react-icons/fa";
 const FoodCard = ({ filteredItem }) => {
     const { name, description, img, options } = filteredItem
     const priceOptionsArray = options[0]
@@ -33,8 +34,13 @@ const FoodCard = ({ filteredItem }) => {
                                 })
                             }
                         </select>
-                        <div className="w-full max-w-xs">
-                            <p><span className="font-semibold">Total Price:</span> 1000BDT.</p>
+                    </div>
+                    <div className="flex justify-between items-center gap-5 my-3">
+                        <div className="w-full max-w-md">
+                            <p><span className="font-semibold text-md">Total Price:</span> 1000BDT.</p>
+                        </div>
+                        <div className="w-full max-w-md text-end">
+                            <button className="btn btn-success text-white">Add To Cart <FaCartArrowDown /></button>
                         </div>
                     </div>
                 </div>
