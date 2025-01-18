@@ -1,5 +1,6 @@
 import { Link, NavLink } from "react-router";
 import { useState, useEffect } from "react";
+import { FaCartArrowDown } from "react-icons/fa";
 
 const Navbar = () => {
     const [theme, setTheme] = useState("cupcake");
@@ -49,7 +50,10 @@ const Navbar = () => {
                         <NavLink className="btn ms-2" to="/login">Login</NavLink>
                     </>
                 ) : (
-                    <button className="btn ms-2" onClick={handleLogout}>Logout</button>
+                    <div>
+                        <button className="btn ms-2">My Cart <FaCartArrowDown></FaCartArrowDown></button>
+                        <button className="btn ms-2" onClick={handleLogout}>Logout</button>
+                    </div>
                 )}
 
                 {/* Theme Toggle */}
