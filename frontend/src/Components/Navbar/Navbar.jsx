@@ -31,11 +31,11 @@ const Navbar = () => {
                 </Link>
                 <div className="hidden lg:flex">
                     <ul className="menu menu-horizontal px-4">
-                        <li>
+                        <li className="font-semibold">
                             <Link to="/">Home</Link>
                         </li>
                         {isAuthenticated && (
-                            <li>
+                            <li className="font-semibold">
                                 <Link to="/orders">My Orders</Link>
                             </li>
                         )}
