@@ -51,7 +51,7 @@ const Navbar = () => {
                     </>
                 ) : (
                     <div>
-                        <button className="btn ms-2">My Cart <FaCartArrowDown></FaCartArrowDown></button>
+                        <NavLink to="/mycart" className="btn">My Cart <FaCartArrowDown className="text-xs"></FaCartArrowDown></NavLink>
                         <button className="btn ms-2" onClick={handleLogout}>Logout</button>
                     </div>
                 )}
